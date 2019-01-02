@@ -1,4 +1,4 @@
-;; -*- no-byte-compile: t; -*-
+﻿;; -*- no-byte-compile: t; -*-
 ;;; lang/python/packages.el
 
 ;; requires: python setuptools
@@ -20,3 +20,10 @@
 (when (package! anaconda-mode)
   (when (featurep! :completion company)
     (package! company-anaconda)))
+;; lsp
+(cond ((and (featurep! :tools +lsp)
+            (featurep! +lsp))
+       (package! lsp-python))
+      ((package! anaconda-mode)
+       (when (featurep! :completion company)
+         (package! company-anaconda))))

@@ -1,4 +1,4 @@
-;;; lang/python/config.el -*- lexical-binding: t; -*-
+﻿;;; lang/python/config.el -*- lexical-binding: t; -*-
 
 (defconst +python-mode-line-indicator '("" +python--version)
   "Format for the python version/env indicator in the mode-line.")
@@ -118,7 +118,6 @@ called.")
         "O" #'nosetests-pdb-one
         "V" #'nosetests-pdb-module))
 
-
 (def-package! python-pytest
   :defer t
   :init
@@ -131,6 +130,12 @@ called.")
         "m" #'python-pytest-repeat
         "p" #'python-pytest-popup))
 
+(when (featurep! +lsp)
+  (after! python
+    (lsp-define-stdio-client lsp-python "python"
+                             #'projectile-project-root
+                             '("pyls"))
+    (add-hook! python-mode #'lsp-python-enable)))
 
 ;;
 ;; Environment management

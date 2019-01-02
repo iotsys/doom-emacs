@@ -1,4 +1,4 @@
-;; -*- no-byte-compile: t; -*-
+﻿;; -*- no-byte-compile: t; -*-
 ;;; lang/web/packages.el
 
 ;; +html.el
@@ -19,3 +19,9 @@
   (package! counsel-css))
 (when (featurep! :completion helm)
   (package! helm-css-scss))
+(cond ((featurep! +lsp)
+       (depends-on! :tools lsp
+                    (package! lsp-css
+                      :recipe (:fetcher
+                               github
+                               :repo "emacs-lsp/lsp-css")))))

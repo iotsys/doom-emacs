@@ -1,4 +1,4 @@
-;; -*- no-byte-compile: t; -*-
+﻿;; -*- no-byte-compile: t; -*-
 ;;; lang/cc/packages.el
 
 (package! cmake-mode)
@@ -27,3 +27,13 @@
     (package! ivy-rtags))
   (when (featurep! :completion helm)
     (package! helm-rtags)))
+
+(cond ((featurep! +lsp)
+       (depends-on! :tools lsp)
+       (package! lsp-cc))
+      ((when (featurep! +rtags)
+         (package! rtags)
+         (when (featurep! :completion ivy)
+           (package! ivy-rtags))
+         (when (featurep! :completion helm)
+           (package! helm-rtags)))))

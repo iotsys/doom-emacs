@@ -1,4 +1,4 @@
-;;; init.el -*- lexical-binding: t; -*-
+﻿;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 
 (doom! :feature
@@ -68,6 +68,7 @@
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        ;;gist              ; interacting with github gists
+       ;;lsp               ; one language server to rule them all
        ;;macos             ; MacOS-specific commands
        ;;make              ; run make tasks from Emacs
        ;;magit             ; a git porcelain for Emacs
@@ -79,6 +80,7 @@
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
        ;;wakatime
+       ;;lsp
 
        :lang
        ;;assembly          ; assembly for fun or debugging

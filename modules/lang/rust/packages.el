@@ -1,4 +1,4 @@
-;; -*- no-byte-compile: t; -*-
+﻿;; -*- no-byte-compile: t; -*-
 ;;; lang/rust/packages.el
 
 ;; requires rust cargo racer
@@ -8,3 +8,9 @@
 
 (when (featurep! :feature syntax-checker)
   (package! flycheck-rust))
+
+(cond ((and (depends-on! :tools lsp)
+            (featurep! +lsp))
+       (package! lsp-rust))
+      ((when (featurep! :completion company)
+         (package! company-racer))))
